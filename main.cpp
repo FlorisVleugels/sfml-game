@@ -12,7 +12,7 @@ int main() {
     textureRunning.loadFromFile("assets/Fighter/Run.png");
 
     sf::Texture textureIdle;
-    textureIdle.loadFromFile("assets/Fighter/Idle/Idle.png");
+    textureIdle.loadFromFile("assets/Fighter/Idle.png");
     sf::Sprite player(textureIdle, playerSheet);
 
     float velocity = 10;

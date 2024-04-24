@@ -1,29 +1,32 @@
 #include <SFML/Graphics.hpp>
+#include "Animation.h"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
     sf::Clock clock;
     sf::Event event;
     window.setFramerateLimit(60);
-    
-    sf::IntRect playerSheet(0, 0, 128, 128);
+    sf::RectangleShape player(sf::Vector2f(128.0f, 128.0f));
+    player.setPosition(200.f, 200.f);
 
-    sf::Texture textureRunning;
-    textureRunning.loadFromFile("assets/Fighter/Run.png");
-
-    sf::Texture textureIdle;
-    textureIdle.loadFromFile("assets/Fighter/Idle.png");
-    sf::Sprite player(textureIdle, playerSheet);
+    sf::Texture playerRunning;
+    playerRunning.loadFromFile("assets/Fighter/Run.png");
+    player.setTexture(&playerRunning);
 
     float velocity = 10;
-    float acceleration = 0;
+    float deltaTime = 0.0f;
+
+    Animation animation(&playerRunning, sf::Vector2u(8,1), 0.3f);
 
     while (window.isOpen()) {
+
+        deltaTime = clock.restart().asSeconds();
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             player.move(-velocity, 0.f);
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+       if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
             player.move(0.f, -velocity);
         }
 
@@ -35,34 +38,13 @@ int main() {
             player.move(velocity, 0.f);
         }
 
-        if (acceleration == 1) {
-            if (clock.getElapsedTime().asSeconds() > 0.1f) {
-                if (playerSheet.left == 1024)
-                    playerSheet.left = 0;
-                else 
-                    playerSheet.left += 128;
-
-                sf::Sprite player(textureRunning, playerSheet);
-                player.setTextureRect(playerSheet);
-                clock.restart();
-            }
-        }
-        
-        if (clock.getElapsedTime().asSeconds() > 0.1f) {
-            if (playerSheet.left == 768)
-                playerSheet.left = 0;
-            else 
-                playerSheet.left += 128;
-
-            sf::Sprite player(textureIdle, playerSheet);
-            player.setTextureRect(playerSheet);
-            clock.restart();
-        }
-
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        animation.Update(0, deltaTime);
+        player.setTextureRect(animation.textureRect);
 
         window.clear();
         window.draw(player);

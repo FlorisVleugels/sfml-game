@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -std=c++17
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # Source files
-SRCS = main.cpp
+SRCS = main.cpp Animation.cpp Animation.h
 
 # Executable name
 EXEC = myprogram

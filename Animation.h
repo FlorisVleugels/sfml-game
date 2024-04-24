@@ -1,10 +1,9 @@
-#pragma once
 #include <SFML/Graphics.hpp>
 
 class Animation {
     public:
         Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
-        void Update(int row, float deltaTime);
+        void Update(float deltaTime);
 
     public:
         sf::IntRect textureRect;

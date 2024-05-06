@@ -22,6 +22,8 @@ int main() {
     float velocity = 10;
     float deltaTime = 0.0f;
 
+    bool moving;
+
     while (window.isOpen()) {
 
         while (window.pollEvent(event)) {
@@ -33,18 +35,25 @@ int main() {
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             player.move(-velocity, 0.f);
+            moving = true;
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
             player.move(velocity, 0.f);
+            moving = true;
         }
 
+        if (moving == true) {
+            player.setTexture(&playerRunning);
+            running.Update(deltaTime);
+            player.setTextureRect(running.textureRect);
+        } else {
+            player.setTexture(&playerIdle);
+            idle.Update(deltaTime);
+            player.setTextureRect(idle.textureRect);
+        }
 
-        player.setTexture(&playerRunning);
-        player.setTexture(&playerIdle);
-
-        running.Update(deltaTime);
-        player.setTextureRect(running.textureRect);
+        moving = false;
 
         window.clear();
         window.draw(player);

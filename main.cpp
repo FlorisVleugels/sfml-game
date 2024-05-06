@@ -33,12 +33,11 @@ int main() {
 
         deltaTime = clock.restart().asSeconds();
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             player.move(-velocity, 0.f);
             moving = true;
-        }
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
             player.move(velocity, 0.f);
             moving = true;
         }

@@ -1,4 +1,4 @@
-# My First Test Game
+# 2D SFML Game
 
 ## Overview
 Welcome to "My First Test Game"! This is a simple test game developed in C++ to explore game development concepts and techniques. The game includes basic gameplay mechanics, rendering, and input handling.

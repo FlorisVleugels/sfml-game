@@ -33,14 +33,6 @@ sudo apt-get update
 sudo apt-get install libsfml-dev g++
 ```
 
-#### On Fedora
-
-Use the following command:
-
-```sh
-sudo dnf install SFML-devel gcc-c++
-```
-
 #### On macOS
 
 You can install SFML using Homebrew:
@@ -62,8 +54,8 @@ To build the project, follow these steps:
 1. Clone the repository:
 
 ```sh
-git clone <repository_url>
-cd test
+git clone https://github.com/FlorisVleugels/sfml-game
+cd sfml-game
 ```
 
 2. Build the project:
@@ -82,12 +74,3 @@ cd build
 ./mygame
 ```
 
-## Directory Structure
-
-MyGameProject/
-├── build/ # Build output directory
-├── resources/ # Game resources (textures, models, sounds, etc.)
-├── src/ # Source files
-├── tests/ # Unit tests
-├── Makefile # Makefile for building the project
-└── README.md # Project overview

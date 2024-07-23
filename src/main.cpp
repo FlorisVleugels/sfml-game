@@ -12,11 +12,11 @@ int main() {
     player.setPosition(0.f, 540.f);
 
     sf::Texture playerRunning;
-    playerRunning.loadFromFile("assets/Fighter/Run.png");
+    playerRunning.loadFromFile("../resources/Fighter/Run.png");
     Animation running(&playerRunning, sf::Vector2u(8,1), 0.1f);
 
     sf::Texture playerIdle;
-    playerIdle.loadFromFile("assets/Fighter/Idle.png");
+    playerIdle.loadFromFile("../resources/Fighter/Idle.png");
     Animation idle(&playerIdle, sf::Vector2u(6,1), 0.1f);
 
     float velocity = 10;
@@ -37,9 +37,11 @@ int main() {
         } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             player.move(-velocity, 0.f);
             moving = true;
+            player.setScale(-1.0f, 1.0f);
         } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
             player.move(velocity, 0.f);
             moving = true;
+            player.setScale(1.0f, 1.0f);
         }
 
         if (moving == true) {

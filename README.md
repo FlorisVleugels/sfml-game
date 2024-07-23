@@ -54,7 +54,7 @@ To build the project, follow these steps:
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/FlorisVleugels/sfml-game
+git clone https://github.com/FlorisVleugels/sfml-game.git
 cd sfml-game
 ```
 

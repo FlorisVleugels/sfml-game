@@ -60,8 +60,8 @@ int main() {
         moving = false;
 
         window.clear();
-        window.draw(player);
         floor.draw(window);
+        window.draw(player);
         window.display();
     }
 

@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
-#include "Animation.h"
+#include "animations/Animation.h"
+#include "scenes/Floor.h"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
@@ -23,6 +24,8 @@ int main() {
     float deltaTime = 0.0f;
 
     bool moving;
+
+    Floor floor;
 
     while (window.isOpen()) {
 
@@ -58,6 +61,7 @@ int main() {
 
         window.clear();
         window.draw(player);
+        floor.draw(window);
         window.display();
     }
 

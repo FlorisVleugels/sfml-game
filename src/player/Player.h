@@ -2,7 +2,8 @@
 #define PLAYER_H
 
 #include <SFML/Graphics.hpp>
-#include "../npc/Boss.h"
+#include "../animations/Animation.h"
+#include "memory"
 
 class Player {
 public:

@@ -1,24 +1,20 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef BOSS_H
+#define BOSS_H
 
 #include <SFML/Graphics.hpp>
-#include "../npc/Boss.h"
+#include "../animations/Animation.h"
+#include <memory>
 
-class Player {
+class Boss {
 public:
-    Player();
+    Boss();
     void update(float deltaTime);
     void draw(sf::RenderWindow& window);
 
 private:
     sf::RectangleShape body;
-    sf::Texture runningTexture;
     sf::Texture idleTexture;
-    std::unique_ptr<Animation> runningAnimation;
     std::unique_ptr<Animation> idleAnimation;
-    float velocity = 6;
-    bool moving;
 };
 
-#endif
-
+#endif 

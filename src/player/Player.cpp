@@ -1,16 +1,20 @@
 #include "Player.h"
 
-Player::Player()
-    : runningAnimation(&runningTexture, sf::Vector2u(8, 1), 0.1f),
-      idleAnimation(&idleTexture, sf::Vector2u(6, 1), 0.1f),
-      velocity(10.0f),
-      moving(false) {
+Player::Player() {
+
+    runningTexture.loadFromFile("../resources/Fighter/Run.png");
+    idleTexture.loadFromFile("../resources/Fighter/Idle.png");
+
+    runningAnimation = std::make_unique<Animation>(&runningTexture, sf::Vector2u(8, 1), 0.1f),
+    idleAnimation = std::make_unique<Animation>(&idleTexture, sf::Vector2u(6, 1), 0.1f),
+    moving = false;
 
     body.setSize(sf::Vector2f(128.0f, 128.0f));
     body.setPosition(0.f, 540.f);
 
-    runningTexture.loadFromFile("../resources/Fighter/Run.png");
-    idleTexture.loadFromFile("../resources/Fighter/Idle.png");
+    // Set the origin to the center of the sprite
+    sf::FloatRect bounds = body.getLocalBounds();
+    body.setOrigin(bounds.width / 2, bounds.height / 2);
 }
 
 void Player::update(float deltaTime) {
@@ -30,12 +34,12 @@ void Player::update(float deltaTime) {
 
     if (moving) {
         body.setTexture(&runningTexture);
-        runningAnimation.Update(deltaTime);
-        body.setTextureRect(runningAnimation.textureRect);
+        runningAnimation -> Update(deltaTime);
+        body.setTextureRect(runningAnimation -> textureRect);
     } else {
         body.setTexture(&idleTexture);
-        idleAnimation.Update(deltaTime);
-        body.setTextureRect(idleAnimation.textureRect);
+        idleAnimation -> Update(deltaTime);
+        body.setTextureRect(idleAnimation -> textureRect);
     }
 }
 

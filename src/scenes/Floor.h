@@ -2,6 +2,7 @@
 #define FLOOR_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 #include <vector>
 
 class Floor {
@@ -14,7 +15,8 @@ private:
     std::vector<sf::Sprite> sprites;
     const float textureWidth = 928.0f; //float textureWidth = layer0Texture.getSize().x;
 
+    sf::RectangleShape testrect;
 };
 
-#endif // FLOOR_H
+#endif 
 

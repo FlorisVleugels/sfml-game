@@ -1,4 +1,5 @@
 #include "Floor.h"
+#include <SFML/System/Vector2.hpp>
 
 Floor::Floor() {
 
@@ -38,5 +39,11 @@ void Floor::draw(sf::RenderWindow& window) {
             window.draw(sprite);
         }
     }
+
+    // Test rect for making collision
+    testrect.setSize(sf::Vector2f(50,1080));
+    testrect.setPosition(1000,0);
+
+    window.draw(testrect);
 }
 

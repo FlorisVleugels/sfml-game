@@ -41,9 +41,9 @@ void Floor::draw(sf::RenderWindow& window) {
     }
 
     // Test rect for making collision
-    testrect.setSize(sf::Vector2f(50,1080));
-    testrect.setPosition(1000,0);
+    // testrect.setSize(sf::Vector2f(50,1080));
+    // testrect.setPosition(1000,0);
 
-    window.draw(testrect);
+    // window.draw(testrect);
 }
 

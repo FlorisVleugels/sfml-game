@@ -30,8 +30,8 @@ int main() {
 
         window.clear();
         floor.draw(window);
-        player.draw(window);
         boss.draw(window);
+        player.draw(window);
         window.display();
     }
 

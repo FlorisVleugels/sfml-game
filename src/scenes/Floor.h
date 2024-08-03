@@ -15,7 +15,7 @@ private:
     std::vector<sf::Sprite> sprites;
     const float textureWidth = 928.0f; //float textureWidth = layer0Texture.getSize().x;
 
-    sf::RectangleShape testrect;
+    // sf::RectangleShape testrect;
 };
 
 #endif 

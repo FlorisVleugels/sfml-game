@@ -2,8 +2,8 @@
 #define PLAYER_H
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Rect.hpp>
 #include "../animations/Animation.h"
+#include "../physics/Collision.h"
 #include "memory"
 
 class Player {
@@ -20,8 +20,7 @@ private:
     std::unique_ptr<Animation> idleAnimation;
     float velocity = 6;
     bool moving;
-    bool falling;
+    bool isColliding;
 };
 
 #endif
-

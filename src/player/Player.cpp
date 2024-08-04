@@ -19,11 +19,11 @@ Player::Player() {
 
 void Player::update(float deltaTime, sf::FloatRect bounds) {
 
-    if (body.getGlobalBounds().intersects(bounds) != true) {
-        falling = false;
-    } else {
-        falling = true;
-        body.move(0.f, velocity*2);
+    Collision Collision(body.getGlobalBounds(), bounds);
+    isColliding = Collision.Evaluator();
+
+    if (isColliding) {
+        body.move(0.f, velocity);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {

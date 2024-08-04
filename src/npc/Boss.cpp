@@ -3,7 +3,7 @@
 Boss::Boss() {
     idleTexture.loadFromFile("../resources/boss/Idle.png");
 
-    idleAnimation = std::make_unique<Animation>(&idleTexture, sf::Vector2u(6, 1), 0.1f);
+    idleAnimation = std::make_unique<Animation>(&idleTexture, sf::Vector2u(6, 1), 0.12f);
 
     body.setSize(sf::Vector2f(280.0f, 162.0f));
     body.setPosition(1000.f, 450.f);

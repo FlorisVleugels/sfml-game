@@ -2,6 +2,7 @@
 #define FLOOR_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <vector>
 
@@ -9,6 +10,7 @@ class Floor {
 public:
     Floor();
     void draw(sf::RenderWindow& window);
+    sf::FloatRect bounds; 
 
 private:
     std::vector<sf::Texture> textures;

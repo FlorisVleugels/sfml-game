@@ -24,8 +24,8 @@ int main() {
         }
 
         deltaTime = clock.restart().asSeconds();
-        
-        player.update(deltaTime);
+    
+        player.update(deltaTime, floor.bounds);
         boss.update(deltaTime);
 
         window.clear();

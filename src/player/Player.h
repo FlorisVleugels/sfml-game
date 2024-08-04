@@ -2,13 +2,14 @@
 #define PLAYER_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Rect.hpp>
 #include "../animations/Animation.h"
 #include "memory"
 
 class Player {
 public:
     Player();
-    void update(float deltaTime);
+    void update(float deltaTime, sf::FloatRect bounds);
     void draw(sf::RenderWindow& window);
 
 private:
@@ -19,6 +20,7 @@ private:
     std::unique_ptr<Animation> idleAnimation;
     float velocity = 6;
     bool moving;
+    bool falling;
 };
 
 #endif

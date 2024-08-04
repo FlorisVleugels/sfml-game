@@ -27,6 +27,8 @@ Floor::Floor() {
         }
         sprites[i].setTexture(textures[i]);
     }
+
+    bounds = sprites[10].getGlobalBounds();
 }
 
 void Floor::draw(sf::RenderWindow& window) {
@@ -36,6 +38,7 @@ void Floor::draw(sf::RenderWindow& window) {
     for (int i = 0; i < numTiles; ++i) {
         for (auto& sprite : sprites) {
             sprite.setPosition(i * textureWidth, 0);
+            sprite.setScale(1.2f, 1.2f);
             window.draw(sprite);
         }
     }

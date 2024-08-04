@@ -4,7 +4,7 @@
 #include "player/Player.h"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Nameless Game");
     window.setFramerateLimit(60);
 
     sf::Clock clock;

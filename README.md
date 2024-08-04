@@ -1,9 +1,9 @@
-# 2D SFML Game
+# Nameless Game
 
-## Overview
+### Overview
 This is a simple test game developed in C++ to explore game development concepts and techniques. The game includes basic gameplay mechanics, rendering, and input handling.
 
-## Requirements
+### Requirements
 
 To build and run this project, you need the following:
 
@@ -47,7 +47,7 @@ brew install sfml gcc
 2. Install g++ as part of MinGW or another suitable development environment.
 3. Follow the instructions for setting up the SFML and g++ toolchain on Windows.
 
-## Building the Project
+### Building the Project
 
 To build the project, follow these steps:
 
@@ -65,7 +65,7 @@ make
 ```
 This will compile the source files and create an executable in the build directory.
 
-## Running the Program
+### Running the Program
 
 Navigate to the build directory and run the executable:
 

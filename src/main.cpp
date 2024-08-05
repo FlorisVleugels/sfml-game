@@ -2,11 +2,14 @@
 #include "scenes/Floor.h"
 #include "npc/Boss.h"
 #include "player/Player.h"
+#include "scenes/MainMenu.h"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Nameless Game");
     window.setFramerateLimit(60);
 
+    MainMenu mainMenu(window.getSize().x, window.getSize().y);
+    
     sf::Clock clock;
     sf::Event event;
 
@@ -27,11 +30,13 @@ int main() {
     
         player.update(deltaTime, floor.bounds);
         boss.update(deltaTime);
+        // mainMenu.update();
 
         window.clear();
-        floor.draw(window);
-        boss.draw(window);
-        player.draw(window);
+        mainMenu.draw(window);
+        // floor.draw(window);
+        // boss.draw(window);
+        // player.draw(window);
         window.display();
     }
 

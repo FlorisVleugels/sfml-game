@@ -7,18 +7,17 @@
 #include <vector>
 
 class Floor {
-public:
-    Floor();
-    void draw(sf::RenderWindow& window);
-    sf::FloatRect bounds; 
+    public:
+        Floor();
+        void draw(sf::RenderWindow& window);
+        sf::FloatRect bounds; 
 
-private:
-    std::vector<sf::Texture> textures;
-    std::vector<sf::Sprite> sprites;
-    const float textureWidth = 928.0f; //float textureWidth = layer0Texture.getSize().x;
+    private:
+        std::vector<sf::Texture> textures;
+        std::vector<sf::Sprite> sprites;
+        const float textureWidth = 928.0f; //float textureWidth = layer0Texture.getSize().x;
 
-    // sf::RectangleShape testrect;
+        // sf::RectangleShape testrect;
 };
 
 #endif 
-

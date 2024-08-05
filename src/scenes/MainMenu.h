@@ -1,7 +1,6 @@
 #ifndef MAINMENU_H
 #define MAINMENU_H
 
-#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics.hpp>
 
 #define MAX_ITEMS 3
@@ -12,7 +11,7 @@ class MainMenu {
         MainMenu(float width, float height);
         ~MainMenu();
         void draw(sf::RenderWindow &window);
-        void update();
+        void update(sf::RenderWindow &window, bool* isPlaying);
 
     private:
         int selectedItemIndex;

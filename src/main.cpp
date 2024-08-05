@@ -14,6 +14,7 @@ int main() {
     sf::Event event;
 
     float deltaTime = 0.0f;
+    bool isPlaying = false;
 
     Floor floor;
     Player player;
@@ -28,15 +29,20 @@ int main() {
 
         deltaTime = clock.restart().asSeconds();
     
-        player.update(deltaTime, floor.bounds);
-        boss.update(deltaTime);
-        // mainMenu.update();
-
         window.clear();
-        mainMenu.draw(window);
-        // floor.draw(window);
-        // boss.draw(window);
-        // player.draw(window);
+
+        if (!isPlaying) {
+            mainMenu.update(window, &isPlaying);
+            mainMenu.draw(window);
+        } else {
+            player.update(deltaTime, floor.bounds);
+            boss.update(deltaTime);
+
+            floor.draw(window);
+            boss.draw(window);
+            player.draw(window);
+        }
+
         window.display();
     }
 

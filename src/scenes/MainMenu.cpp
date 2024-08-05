@@ -1,5 +1,5 @@
 #include "MainMenu.h"
-#include <SFML/Graphics/Rect.hpp>
+#include <iostream>
 
 MainMenu::MainMenu(float width, float height) {
 
@@ -12,6 +12,7 @@ MainMenu::MainMenu(float width, float height) {
     bounds[0] = menu[0].getLocalBounds();
     menu[0].setOrigin(bounds[0].width / 2, bounds[0].height / 2 );
     menu[0].setPosition(sf::Vector2f(width / 2, height / 20 * 13 ));
+    menu[0].setFillColor(sf::Color::Red);
 
     menu[1].setFont(font);
     menu[1].setString("Settings");
@@ -31,9 +32,38 @@ MainMenu::MainMenu(float width, float height) {
     bounds[3] = title.getLocalBounds();
     title.setOrigin(bounds[3].width / 2, bounds[3].height / 2 );
     title.setPosition(sf::Vector2f(width / 2, height / 4 ));
+
+    selectedItemIndex = 0;
 }
 
 MainMenu::~MainMenu() {
+}
+
+void MainMenu::update(sf::RenderWindow &window, bool* isPlaying) {
+
+    // TODO: Why MAX_ITEMS -1? Seems somoething wrong
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && selectedItemIndex < MAX_ITEMS - 1){
+        selectedItemIndex++; 
+        menu[selectedItemIndex].setFillColor(sf::Color::Red);
+        menu[selectedItemIndex - 1].setFillColor(sf::Color::White);
+    } 
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && selectedItemIndex > 0) {
+        selectedItemIndex--;
+        menu[selectedItemIndex].setFillColor(sf::Color::Red);
+        menu[selectedItemIndex + 1].setFillColor(sf::Color::White);
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+        if (selectedItemIndex == 0) {
+            std::cout << "I am playing the game" << "\n";
+            *isPlaying = true;
+        } else if (selectedItemIndex == 1) {
+            std::cout << "Opening the options menu" << "\n";
+        } else if (selectedItemIndex == 2) {
+            window.close();
+        }
+    }
 }
 
 void MainMenu::draw(sf::RenderWindow &window) {

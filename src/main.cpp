@@ -3,6 +3,8 @@
 #include "npc/Boss.h"
 #include "player/Player.h"
 #include "scenes/MainMenu.h"
+#include "util/XMLParser.h"
+
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Nameless Game");
@@ -20,6 +22,10 @@ int main() {
     Player player;
     Boss boss;
 
+    XMLParser loader("../resources/levels/map.xml");
+    std::vector<std::vector<int>> matrix = loader.loadMatrix();
+    loader.printMatrix(matrix);
+
     while (window.isOpen()) {
 
         while (window.pollEvent(event)) {
@@ -34,6 +40,7 @@ int main() {
         if (!isPlaying) {
             mainMenu.update(window, &isPlaying);
             mainMenu.draw(window);
+
         } else {
             player.update(deltaTime, floor.bounds);
             boss.update(deltaTime);

@@ -8,11 +8,11 @@ CFLAGS = -Wall -Wextra -std=c++17 -Isrc/player -Isrc/floor -Isrc/animations
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # Source directories
-SRC_DIRS = src/animations src/scenes src/npc src/player src/physics src
+SRC_DIRS = src/animations src/scenes src/npc src/player src/physics src/util src
 
 # Build directories
 BUILD_DIR = build
-BUILD_SUBDIRS = $(BUILD_DIR)/animations $(BUILD_DIR)/scenes $(BUILD_DIR)/npc $(BUILD_DIR)/player $(BUILD_DIR)/physics
+BUILD_SUBDIRS = $(BUILD_DIR)/animations $(BUILD_DIR)/scenes $(BUILD_DIR)/npc $(BUILD_DIR)/player $(BUILD_DIR)/physics $(BUILD_DIR)/util
 
 # Find all .cpp files in the src directory and its subdirectories
 SRCS = $(wildcard $(SRC_DIRS:%=%/*.cpp))

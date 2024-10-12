@@ -19,6 +19,7 @@ class MainMenu {
         sf::Text menu[MAX_ITEMS];
         sf::Text title;
         sf::FloatRect bounds[MAX_ITEMS+1];
+        bool isReleased;
 };
 
 #endif // !MAINMENU_H

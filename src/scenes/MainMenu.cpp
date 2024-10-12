@@ -34,6 +34,7 @@ MainMenu::MainMenu(float width, float height) {
     title.setPosition(sf::Vector2f(width / 2, height / 4 ));
 
     selectedItemIndex = 0;
+    isReleased = true;
 }
 
 MainMenu::~MainMenu() {
@@ -42,16 +43,22 @@ MainMenu::~MainMenu() {
 void MainMenu::update(sf::RenderWindow &window, bool* isPlaying) {
 
     // TODO: Why MAX_ITEMS -1? Seems somoething wrong
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && selectedItemIndex < MAX_ITEMS - 1){
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && selectedItemIndex < MAX_ITEMS - 1 && isReleased) {
         selectedItemIndex++; 
         menu[selectedItemIndex].setFillColor(sf::Color::Red);
         menu[selectedItemIndex - 1].setFillColor(sf::Color::White);
+        isReleased = false;
     } 
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && selectedItemIndex > 0) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && selectedItemIndex > 0 && isReleased) {
         selectedItemIndex--;
         menu[selectedItemIndex].setFillColor(sf::Color::Red);
         menu[selectedItemIndex + 1].setFillColor(sf::Color::White);
+        isReleased = false;
+    }
+
+    if (!sf::Keyboard::isKeyPressed(sf::Keyboard::W) && !sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+        isReleased = true;  
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
@@ -60,6 +67,7 @@ void MainMenu::update(sf::RenderWindow &window, bool* isPlaying) {
             *isPlaying = true;
         } else if (selectedItemIndex == 1) {
             std::cout << "Opening the options menu" << "\n";
+            std::cout << "settings option location" << menu[1].getPosition().x << menu[1].getPosition().y << "\n";
         } else if (selectedItemIndex == 2) {
             window.close();
         }

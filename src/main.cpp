@@ -34,7 +34,6 @@ int main() {
         }
 
         deltaTime = clock.restart().asSeconds();
-    
         window.clear();
 
         if (!isPlaying) {

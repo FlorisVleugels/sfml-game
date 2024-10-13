@@ -1,25 +1,25 @@
-#ifndef MAINMENU_H
-#define MAINMENU_H
+#ifndef PAUSEMENU_H
+#define PAUSEMENU_H
 
 #include <SFML/Graphics.hpp>
 
 #define MAX_ITEMS 3
 
-class MainMenu {
+class PauseMenu {
 
     public:
-        MainMenu(float width, float height);
-        ~MainMenu();
+        PauseMenu(float width, float height);
+        ~PauseMenu();
         void draw(sf::RenderWindow &window);
-        void update(sf::RenderWindow &window, bool *isPlaying);
+        void update(sf::RenderWindow &window, bool *isPaused);
 
     private:
         int selectedItemIndex;
         sf::Font font;
         sf::Text menu[MAX_ITEMS];
-        sf::Text title;
         sf::FloatRect bounds[MAX_ITEMS+1];
         bool isReleased;
+        sf::RectangleShape background;
 };
 
-#endif // !MAINMENU_H
+#endif // !PAUSEMENU_H

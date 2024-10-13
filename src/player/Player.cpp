@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <SFML/Graphics/Rect.hpp>
+#include "iostream"
 
 Player::Player() {
 
@@ -17,7 +18,12 @@ Player::Player() {
     body.setOrigin(bounds.width / 2, bounds.height / 2);
 }
 
-void Player::update(float deltaTime, sf::FloatRect bounds) {
+void Player::update(float deltaTime, sf::FloatRect bounds, bool *isPaused) {
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+        std::cout << "Back to main menu" << "\n";
+        *isPaused = true;
+    }
 
     Collision Collision(body.getGlobalBounds(), bounds);
     isColliding = Collision.Evaluator();

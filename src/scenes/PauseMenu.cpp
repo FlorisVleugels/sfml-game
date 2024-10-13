@@ -1,46 +1,43 @@
-#include "MainMenu.h"
+#include "PauseMenu.h"
+#include <SFML/Graphics/Color.hpp>
 #include <iostream>
 
-MainMenu::MainMenu(float width, float height) {
+PauseMenu::PauseMenu(float width, float height) {
 
     if (!font.loadFromFile("../resources/fonts/OptimusPrincepsSemiBold.ttf")) {
         // Handle loading error
     }
 
     menu[0].setFont(font);
-    menu[0].setString("Play");
+    menu[0].setString("Continue");
     bounds[0] = menu[0].getLocalBounds();
     menu[0].setOrigin(bounds[0].width / 2, bounds[0].height / 2 );
-    menu[0].setPosition(sf::Vector2f(width / 2, height / 20 * 13 ));
+    menu[0].setPosition(sf::Vector2f(width / 2, height / 20 * 8.5 ));
     menu[0].setFillColor(sf::Color::Red);
 
     menu[1].setFont(font);
     menu[1].setString("Settings");
     bounds[1] = menu[1].getLocalBounds();
     menu[1].setOrigin(bounds[1].width / 2, bounds[1].height / 2 );
-    menu[1].setPosition(sf::Vector2f(width / 2, height / 20 * 14.5 ));
+    menu[1].setPosition(sf::Vector2f(width / 2, height / 20 * 10 ));
 
     menu[2].setFont(font);
     menu[2].setString("Quit");
     bounds[2] = menu[2].getLocalBounds();
     menu[2].setOrigin(bounds[2].width / 2, bounds[2].height / 2 );
-    menu[2].setPosition(sf::Vector2f(width / 2, height / 20 * 16 ));
-
-    title.setFont(font);
-    title.setCharacterSize(126);
-    title.setString("Nameless Game");
-    bounds[3] = title.getLocalBounds();
-    title.setOrigin(bounds[3].width / 2, bounds[3].height / 2 );
-    title.setPosition(sf::Vector2f(width / 2, height / 4 ));
+    menu[2].setPosition(sf::Vector2f(width / 2, height / 20 * 11.5 ));
 
     selectedItemIndex = 0;
     isReleased = true;
+
+    background.setSize(sf::Vector2f(width, height));
+    background.setFillColor(sf::Color(0, 0, 0, 200));
 }
 
-MainMenu::~MainMenu() {
+PauseMenu::~PauseMenu() {
 }
 
-void MainMenu::update(sf::RenderWindow &window, bool *isPlaying) {
+void PauseMenu::update(sf::RenderWindow &window, bool *isPaused) {
 
     // TODO: Why MAX_ITEMS -1? Seems somoething wrong
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && selectedItemIndex < MAX_ITEMS - 1 && isReleased) {
@@ -63,8 +60,8 @@ void MainMenu::update(sf::RenderWindow &window, bool *isPlaying) {
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
         if (selectedItemIndex == 0) {
-            std::cout << "I am playing the game" << "\n";
-            *isPlaying = true;
+            std::cout << "Continue Playing" << "\n";
+            *isPaused = false;
         } else if (selectedItemIndex == 1) {
             std::cout << "Opening the options menu" << "\n";
             std::cout << "settings option location" << menu[1].getPosition().x << menu[1].getPosition().y << "\n";
@@ -74,10 +71,12 @@ void MainMenu::update(sf::RenderWindow &window, bool *isPlaying) {
     }
 }
 
-void MainMenu::draw(sf::RenderWindow &window) {
+void PauseMenu::draw(sf::RenderWindow &window) {
+
+    window.draw(background);
 
     for (int i = 0; i < MAX_ITEMS; i++) {
         window.draw(menu[i]);
     }
-    window.draw(title);
 }
+

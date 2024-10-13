@@ -3,6 +3,7 @@
 #include "npc/Boss.h"
 #include "player/Player.h"
 #include "scenes/MainMenu.h"
+#include "scenes/PauseMenu.h"
 #include "util/XMLParser.h"
 
 
@@ -11,12 +12,14 @@ int main() {
     window.setFramerateLimit(60);
 
     MainMenu mainMenu(window.getSize().x, window.getSize().y);
+    PauseMenu pauseMenu(window.getSize().x, window.getSize().y);
     
     sf::Clock clock;
     sf::Event event;
 
     float deltaTime = 0.0f;
     bool isPlaying = false;
+    bool isPaused = false;
 
     Floor floor;
     Player player;
@@ -39,14 +42,20 @@ int main() {
         if (!isPlaying) {
             mainMenu.update(window, &isPlaying);
             mainMenu.draw(window);
-
         } else {
-            player.update(deltaTime, floor.bounds);
-            boss.update(deltaTime);
-
-            floor.draw(window);
-            boss.draw(window);
-            player.draw(window);
+            if (!isPaused) {
+                player.update(deltaTime, floor.bounds, &isPaused);
+                boss.update(deltaTime);
+                floor.draw(window);
+                boss.draw(window);
+                player.draw(window);
+            } else { 
+                floor.draw(window);
+                boss.draw(window);
+                player.draw(window);
+                pauseMenu.update(window, &isPaused);
+                pauseMenu.draw(window);
+            }
         }
 
         window.display();

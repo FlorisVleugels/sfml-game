@@ -9,7 +9,7 @@
 class Player {
 public:
     Player();
-    void update(float deltaTime, sf::FloatRect bounds);
+    void update(float deltaTime, sf::FloatRect bounds, bool *isPaused);
     void draw(sf::RenderWindow& window);
 
 private:
